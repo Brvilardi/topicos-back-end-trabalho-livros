@@ -59,28 +59,40 @@ Para implementar o projeto basta seguir os seguintes passos:
 
 Configurar o venv do CDK:
         `cd iac`
+
         `python3 -m venv .venv`
+
         `source .venv/bin/activate`
+
         `pip install -r requirements.txt`
+
 
 Fazer o deploy da infra
         `dk bootstrap`
+
         `cdk deploy`
 
 Buildar o front end
         `cd front`
+
         `flutter pub get`
+
         `flutter build web`
 
 Implementar o front end
         `cd build/web`
+
         `aws s3 cp . s3://<nome do bucket>  --recursive`
 
 Invalidar o cache
         `Abrir console da AWS`
+
         `Acessar o serviço CloudFront`
+
         `Abrir a distribuição criada pelo IaC`
+
         `Clicar em "invalidações"`
+        
         `Criar invalidação com "/*"`
 
 Acessar a aplicação

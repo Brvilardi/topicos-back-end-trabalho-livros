@@ -28,16 +28,24 @@ Rotas disponíveis:
 Chave de API: 7YQaiuW0lq8d5HIvNzdBrafvB8q7J10l1t0NIOEF
 
 *referência de json:
-        ```json
+        
         {
+            
             "produto":
+
                 {
+
                     "id": "12345",
-                    "nome": "Leite"    
+
+                    "nome": "Leite"  
+
                 },
+
                 "comentario": "gelado",
+
                 "classificacao": 8
-        }```
+
+        }
 
 
 ## Diagrama de Arquitetura
@@ -58,13 +66,13 @@ Chave de API: 7YQaiuW0lq8d5HIvNzdBrafvB8q7J10l1t0NIOEF
 Para implementar o projeto basta seguir os seguintes passos:
 
 Configurar o venv do CDK:
-        `cd iac`
+        cd iac
 
-        `python3 -m venv .venv`
+        python3 -m venv .venv
 
-        `source .venv/bin/activate`
+        source .venv/bin/activate
 
-        `pip install -r requirements.txt`
+        pip install -r requirements.txt
 
 
 Fazer o deploy da infra
@@ -73,16 +81,16 @@ Fazer o deploy da infra
         `cdk deploy`
 
 Buildar o front end
-        `cd front`
+        cd front
 
-        `flutter pub get`
+        flutter pub get
 
-        `flutter build web`
+        flutter build web
 
 Implementar o front end
-        `cd build/web`
+        cd build/web
 
-        `aws s3 cp . s3://<nome do bucket>  --recursive`
+        aws s3 cp . s3://<nome do bucket>  --recursive
 
 Invalidar o cache
         Abrir console da AWS

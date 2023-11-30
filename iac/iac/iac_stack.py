@@ -75,3 +75,42 @@ class IacStack(Stack):
         self.api_gateway_resource.add_resource("enviar-feedback").add_method("POST",
                                                                              integration=LambdaIntegration(
                                                                                  self.enviar_feedback_lambda))
+
+
+        self.ler_feedback_lambda = lambda_.Function(self, "LerFeedbackLambda",
+                                                         code=lambda_.Code.from_asset(
+                                                              "../funcoes/ler_feedback"),
+                                                         handler="ler_feedback_lambda.lambda_handler",
+                                                         runtime=lambda_.Runtime.PYTHON_3_9,
+                                                         timeout=Duration.seconds(
+                                                              30),
+                                                         memory_size=128,
+                                                         layers=[
+                                                              self.lambda_layer],
+                                                          environment=LAMBDA_ENVIRONMENTS
+                                                         )
+        
+        self.table.grant_read_write_data(self.ler_feedback_lambda)
+
+        self.api_gateway_resource.add_resource("ler-feedback").add_method("GET",
+                                                                                integration=LambdaIntegration(
+                                                                                    self.ler_feedback_lambda))
+
+        self.ler_todos_feedbacks_lambda = lambda_.Function(self, "LerTodosFeedbacksLambda",
+                                                            code=lambda_.Code.from_asset(
+                                                                "../funcoes/ler_todos_feedbacks"),
+                                                            handler="ler_todos_feedbacks_lambda.lambda_handler",
+                                                            runtime=lambda_.Runtime.PYTHON_3_9,
+                                                            timeout=Duration.seconds(
+                                                                30),
+                                                            memory_size=128,
+                                                            layers=[
+                                                                self.lambda_layer],
+                                                            environment=LAMBDA_ENVIRONMENTS
+                                                            )
+        
+        self.table.grant_read_write_data(self.ler_todos_feedbacks_lambda)
+
+        self.api_gateway_resource.add_resource("ler-todos-feedbacks").add_method("GET",
+                                                                                integration=LambdaIntegration(
+                                                                                    self.ler_todos_feedbacks_lambda))

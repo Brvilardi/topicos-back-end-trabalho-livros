@@ -85,18 +85,19 @@ Implementar o front end
         `aws s3 cp . s3://<nome do bucket>  --recursive`
 
 Invalidar o cache
-        `Abrir console da AWS`
+        Abrir console da AWS
 
-        `Acessar o serviço CloudFront`
+        Acessar o serviço CloudFront
 
-        `Abrir a distribuição criada pelo IaC`
+        Abrir a distribuição criada pelo IaC
 
-        `Clicar em "invalidações"`
-        
-        `Criar invalidação com "/*"`
+        Clicar em "invalidações"
+
+        Criar invalidação com "/*"
 
 Acessar a aplicação
-        `Abrir via navegador a página pela URL do cloudfront + "/index.html"`
+        
+        Abrir via navegador a página pela URL do cloudfront + "/index.html"
 
 
 

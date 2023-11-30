@@ -21,7 +21,7 @@ Rotas disponíveis:
 - POST enviar-feedback (body: json*)
 
 *referência de json:
-        `{
+        ```{
             "produto":
                 {
                     "id": "12345",
@@ -29,7 +29,8 @@ Rotas disponíveis:
                 },
                 "comentario": "gelado",
                 "classificacao": 8
-        }`
+        }```
+
 
 ## Diagrama de Arquitetura
 ![image](https://github.com/Brvilardi/topicos-back-end-trabalho-livros/blob/main/artefatos/t2-back.jpg?raw=true)

@@ -67,7 +67,7 @@ Configurar o venv do CDK:
 
 Fazer o deploy da infra
 
-        dk bootstrap
+        cdk bootstrap
         cdk deploy
 
 Buildar o front end

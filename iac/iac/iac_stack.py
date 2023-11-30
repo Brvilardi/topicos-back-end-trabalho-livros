@@ -12,12 +12,18 @@ from aws_cdk.aws_apigateway import RestApi, Cors, LambdaIntegration
 
 from constructs import Construct
 
+from iac.front_stack import FrontEnd
+
 
 
 class IacStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
+
+        ## ================== FrontEnd ================== ##
+
+        self.front = FrontEnd(self, "FrontEnd")
 
         self.table = dynamodb.Table(
             self, "FeedbacksTable",
@@ -29,10 +35,13 @@ class IacStack(Stack):
             removal_policy=RemovalPolicy.DESTROY
         )
 
+        ## ================== BACK ================== ##
+
         LAMBDA_ENVIRONMENTS = {
             "DYNAMO_TABLE": self.table.table_name,
         }
 
+        ## ==== API Gateway ==== ##
         self.rest_api = RestApi(self, "FeedbacksAPI",
                                 rest_api_name="FeedbacksAPI",
                                 description="This is the RestApi for the FeedbacksAPI",
@@ -49,6 +58,25 @@ class IacStack(Stack):
             "allow_headers": Cors.DEFAULT_HEADERS
         }
         )
+
+        self.api_key = self.rest_api.add_api_key("FeedbacksAPIKey")
+
+        self.api_usage_plan = self.rest_api.add_usage_plan("FeedbacksAPIUsagePlan",
+                                                           name="FeedbacksAPIUsagePlan",
+                                        throttle={
+                                            "rate_limit": 10,
+                                            "burst_limit": 1
+                                        })
+        
+        self.api_usage_plan.add_api_stage(
+            stage=self.rest_api.deployment_stage
+        )
+        
+        self.api_usage_plan.add_api_key(self.api_key)
+        
+        
+
+        ## ==== Lambdas ==== ##
 
         self.lambda_layer = lambda_.LayerVersion(self, "LambdaLayer",
                                                  code=lambda_.Code.from_asset(
@@ -74,7 +102,8 @@ class IacStack(Stack):
 
         self.api_gateway_resource.add_resource("enviar-feedback").add_method("POST",
                                                                              integration=LambdaIntegration(
-                                                                                 self.enviar_feedback_lambda))
+                                                                                 self.enviar_feedback_lambda),
+                                                                                 api_key_required=True)
 
 
         self.ler_feedback_lambda = lambda_.Function(self, "LerFeedbackLambda",
@@ -94,7 +123,8 @@ class IacStack(Stack):
 
         self.api_gateway_resource.add_resource("ler-feedback").add_method("GET",
                                                                                 integration=LambdaIntegration(
-                                                                                    self.ler_feedback_lambda))
+                                                                                    self.ler_feedback_lambda),
+                                                                                    api_key_required=True)
 
         self.ler_todos_feedbacks_lambda = lambda_.Function(self, "LerTodosFeedbacksLambda",
                                                             code=lambda_.Code.from_asset(
@@ -113,4 +143,5 @@ class IacStack(Stack):
 
         self.api_gateway_resource.add_resource("ler-todos-feedbacks").add_method("GET",
                                                                                 integration=LambdaIntegration(
-                                                                                    self.ler_todos_feedbacks_lambda))
+                                                                                    self.ler_todos_feedbacks_lambda),
+                                                                                    api_key_required=True)

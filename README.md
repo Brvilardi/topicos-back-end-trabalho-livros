@@ -32,7 +32,7 @@ Rotas disponíveis:
         }`
 
 ## Diagrama de Arquitetura
-![image](https://github.com/Brvilardi/topicos-back-end-trabalho-livros/blob/main/artefatos/../../../../../../../artefatos/t2-back.jpg?raw=true)
+![image](https://github.com/Brvilardi/topicos-back-end-trabalho-livros/blob/main/artefatos/t2-back.jpg?raw=true)
 
 
 ## Artefatos

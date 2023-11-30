@@ -30,21 +30,13 @@ Chave de API: 7YQaiuW0lq8d5HIvNzdBrafvB8q7J10l1t0NIOEF
 *referência de json:
         
         {
-            
             "produto":
-
                 {
-
                     "id": "12345",
-
                     "nome": "Leite"  
-
                 },
-
                 "comentario": "gelado",
-
                 "classificacao": 8
-
         }
 
 

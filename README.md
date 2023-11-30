@@ -49,6 +49,7 @@ A infraestrutura foi 100% implementada usando infraestrutura como código com o 
 Para implementar o projeto basta seguir os seguintes passos:
 
 Configurar o venv do CDK:
+ * `cdk ls` 
         cd iac
         python3 -m venv .venv
         source .venv/bin/activate

@@ -62,6 +62,9 @@ Chave de API: 7YQaiuW0lq8d5HIvNzdBrafvB8q7J10l1t0NIOEF
 
 - A infraestrutura foi 100% implementada usando infraestrutura como código com o AWS CDK e pode ser encontrada na pasta /iac
 
+
+- O código do Front end foi adaptado de https://github.com/professorbossini/pessoal_flutter_aws_livros e pode ser encontrado em /front
+
 ## Implementação
 
 Para implementar o projeto basta seguir os seguintes passos:

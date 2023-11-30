@@ -25,6 +25,8 @@ Rotas disponíveis:
 - GET ler-todos-feedbacks
 - POST enviar-feedback (body: json*)
 
+Chave de API: 7YQaiuW0lq8d5HIvNzdBrafvB8q7J10l1t0NIOEF
+
 *referência de json:
         ```json
         {

@@ -1,8 +1,10 @@
+# Codigo extraido de https://github.com/Maua-Dev/clean_mss_template
+
 from typing import Any
 from warnings import warn
 
-from http_status_code_enum import HttpStatusCodeEnum
-from external_interface import IRequest, IResponse
+from shared.http.http_status_code_enum import HttpStatusCodeEnum
+from shared.http.external_interface import IRequest, IResponse
 
 
 class HttpRequest(IRequest):

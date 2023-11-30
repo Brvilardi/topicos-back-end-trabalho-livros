@@ -1,7 +1,9 @@
+# Codigo extraido de https://github.com/Maua-Dev/clean_mss_template
+
 from typing import Any
 
-from http_status_code_enum import HttpStatusCodeEnum
-from http_models import HttpResponse
+from shared.http.http_status_code_enum import HttpStatusCodeEnum
+from shared.http.http_models import HttpResponse
 
 
 class OK(HttpResponse):

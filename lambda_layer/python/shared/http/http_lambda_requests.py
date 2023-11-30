@@ -1,8 +1,8 @@
-
+# Codigo extraido de https://github.com/Maua-Dev/clean_mss_template
 
 import json
 
-from http_models import HttpRequest, HttpResponse
+from shared.http.http_models import HttpRequest, HttpResponse
 
 
 class LambdaHttpResponse(HttpResponse):

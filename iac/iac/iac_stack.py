@@ -3,26 +3,75 @@ from aws_cdk import (
     Duration,
     Stack,
     # aws_sqs as sqs,
-    aws_lambda as lambda_
+    aws_lambda as lambda_,
+    aws_dynamodb as dynamodb, RemovalPolicy
 
 )
+
+from aws_cdk.aws_apigateway import RestApi, Cors, LambdaIntegration
+
 from constructs import Construct
+
+
 
 class IacStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
+        self.table = dynamodb.Table(
+            self, "FeedbacksTable",
+            partition_key=dynamodb.Attribute(
+                name="PK",
+                type=dynamodb.AttributeType.STRING
+            ),
+            billing_mode=dynamodb.BillingMode.PAY_PER_REQUEST,
+            removal_policy=RemovalPolicy.DESTROY
+        )
+
+        LAMBDA_ENVIRONMENTS = {
+            "DYNAMO_TABLE": self.table.table_name,
+        }
+
+        self.rest_api = RestApi(self, "FeedbacksAPI",
+                                rest_api_name="FeedbacksAPI",
+                                description="This is the RestApi for the FeedbacksAPI",
+                                default_cors_preflight_options={
+                                    "allow_origins": Cors.ALL_ORIGINS,
+                                    "allow_methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+                                    "allow_headers": ["*"]
+                                },
+                                )
+
+        self.api_gateway_resource = self.rest_api.root.add_resource("feedback", default_cors_preflight_options={
+            "allow_origins": Cors.ALL_ORIGINS,
+            "allow_methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+            "allow_headers": Cors.DEFAULT_HEADERS
+        }
+        )
+
         self.lambda_layer = lambda_.LayerVersion(self, "LambdaLayer",
-                                                 code=lambda_.Code.from_asset("../lambda_layer"),
-                                                 compatible_runtimes=[lambda_.Runtime.PYTHON_3_9]
+                                                 code=lambda_.Code.from_asset(
+                                                     "../lambda_layer"),
+                                                 compatible_runtimes=[
+                                                     lambda_.Runtime.PYTHON_3_9]
                                                  )
-        
+
         self.enviar_feedback_lambda = lambda_.Function(self, "EnviarFeedbackLambda",
-                                                         code=lambda_.Code.from_asset("../funcoes/enviar_feedback"),
-                                                         handler="enviar_feedback_lambda.lambda_handler",
-                                                         runtime=lambda_.Runtime.PYTHON_3_9,
-                                                         timeout=Duration.seconds(30),
-                                                         memory_size=128,
-                                                         layers=[self.lambda_layer],
-                                                         )
+                                                       code=lambda_.Code.from_asset(
+                                                           "../funcoes/enviar_feedback"),
+                                                       handler="enviar_feedback_lambda.lambda_handler",
+                                                       runtime=lambda_.Runtime.PYTHON_3_9,
+                                                       timeout=Duration.seconds(
+                                                           30),
+                                                       memory_size=128,
+                                                       layers=[
+                                                           self.lambda_layer],
+                                                        environment=LAMBDA_ENVIRONMENTS
+                                                       )
+        
+        self.table.grant_read_write_data(self.enviar_feedback_lambda)
+
+        self.api_gateway_resource.add_resource("enviar-feedback").add_method("POST",
+                                                                             integration=LambdaIntegration(
+                                                                                 self.enviar_feedback_lambda))

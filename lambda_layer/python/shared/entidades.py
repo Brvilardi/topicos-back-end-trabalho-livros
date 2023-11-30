@@ -26,6 +26,7 @@ class Produto:
 
 
 class Feedback:
+    id: str
     produto: Produto
     comentario: str
     classificacao: float

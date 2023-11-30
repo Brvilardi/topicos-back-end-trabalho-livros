@@ -1,3 +1,5 @@
+# Codigo extraido de https://github.com/Maua-Dev/clean_mss_template
+
 from enum import Enum
 
 

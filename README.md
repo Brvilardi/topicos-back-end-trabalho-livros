@@ -4,7 +4,14 @@
 
 | Nome    | RA |
 | -------- | ------- |
-| Bruno Vilardi Bueno  | 19.00331-5     |
+| Bruno Vilardi Bueno  | 19.00331-5 |
+| Felipe Ros Pegini  | 18.00232-3 |
+| Matheus Sungho Ha  | 18.00525-0 |
+| Gabriel Gomes Bermudi Santos  | 18.00947-6 |
+
+
+
+
 
 ## Overview
 Trabalho realizado para a disciplina de Tópicos Avançados em Back End
@@ -18,6 +25,8 @@ Front: https://d27g3rvb8o75cq.cloudfront.net/index.html
 Back: https://r4gw3w34fg.execute-api.us-east-1.amazonaws.com/prod/feedback/
 
 Documentação do Back: https://www.postman.com/speeding-sunset-812905/workspace/selfie-dev-maua/collection/16858667-bd1209c5-a221-47b6-9506-b5d5e2b11afc?action=share&creator=16858667
+
+Arquivo no S3: https://feedbacks-front-t2-1234.s3.amazonaws.com/index.html (o arquivo não é acessível, pois o bucket é privado para que todo acesso ao web app seja feito via CloudFront - melhor prática da AWS)
 
 Info para fazer requisições do Back:
 Rotas disponíveis: 

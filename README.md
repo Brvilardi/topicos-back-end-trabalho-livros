@@ -54,16 +54,16 @@ Chave de API: 7YQaiuW0lq8d5HIvNzdBrafvB8q7J10l1t0NIOEF
 
 
 ## Artefatos
-- A coleção do postman pode ser encontrada via JSON na pasta /artefatos ou via link
-- A coleção do API Gateway pode ser encontrada na pasta /artefatos
+- A coleção do postman pode ser encontrada via JSON na pasta `/artefatos` ou via link
+- A coleção do API Gateway pode ser encontrada na pasta `/artefatos`
 
-- As funções Lambda de cada rota podem ser encontradas na pasta /funcoes
-- O código que é comum a todas as Lambdas pode ser encontrado na pasta /lambda_layer
+- As funções Lambda de cada rota podem ser encontradas na pasta `/funcoes`
+- O código que é comum a todas as Lambdas pode ser encontrado na pasta `/lambda_layer`
 
-- A infraestrutura foi 100% implementada usando infraestrutura como código com o AWS CDK e pode ser encontrada na pasta /iac
+- A infraestrutura foi 100% implementada usando infraestrutura como código com o AWS CDK e pode ser encontrada na pasta `/iac`
 
 
-- O código do Front end foi adaptado de https://github.com/professorbossini/pessoal_flutter_aws_livros e pode ser encontrado em /front
+- O código do Front end foi adaptado de https://github.com/professorbossini/pessoal_flutter_aws_livros e pode ser encontrado em `/front`
 
 ## Implementação
 

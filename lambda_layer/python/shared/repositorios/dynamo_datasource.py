@@ -65,7 +65,7 @@ class DynamoDatasource:
         """
 
         resp = self.dynamo_table.get_item(
-            Key={self.partition_key: partition_key, self.sort_key: sort_key if sort_key else None}
+            Key={self.partition_key: partition_key}
         )
         return resp
 

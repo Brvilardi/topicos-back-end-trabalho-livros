@@ -31,13 +31,15 @@ class Feedback:
     comentario: str
     classificacao: float
 
-    def __init__(self, produto, comentario, classificacao):
+    def __init__(self, id, produto, comentario, classificacao):
+        self.id = id
         self.produto = produto
         self.comentario = comentario
         self.classificacao = classificacao
 
     def to_dict(self):
         return {
+            'id': self.id,
             'produto': self.produto.to_dict(),
             'comentario': self.comentario,
             'classificacao': self.classificacao
@@ -45,7 +47,11 @@ class Feedback:
     
     @staticmethod
     def from_dict(source):
-        return Feedback(Produto.from_dict(source[u'produto']), source[u'comentario'], source[u'classificacao'])
+        return Feedback(
+            produto=Produto.from_dict(source['produto']), 
+            id=source["id"], 
+            comentario=source['comentario'], 
+            classificacao=source['classificacao'])
     
     @staticmethod
     def from_json(source):

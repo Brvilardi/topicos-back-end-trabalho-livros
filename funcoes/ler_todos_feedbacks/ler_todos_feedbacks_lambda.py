@@ -6,23 +6,20 @@ from uuid import uuid4
 feedback_repository = FeedbacksRepositoryDynamo()
 
 
-
 def lambda_handler(event, context):
 
-    httpRequest = LambdaHttpRequest(data=event)
 
-    httpRequest.body["id"] = str(uuid4())
-    
-    feedback = Feedback.from_dict(httpRequest.body)
+    feedbacks = feedback_repository.get_todos_feedback()
 
-    feedback_repository.create_feedback(feedback)
+    if len(feedbacks) == 0:
+        raise Exception("Nenhum feedback encontrado")
 
     
     httpResponse = LambdaHttpResponse(
         status_code=200,
         body={
-            "message": "Feedback enviado com sucesso!",
-            "feedback": feedback.to_dict()
+            "message": "Feedbacks lidos com sucesso!",
+            "feedbacks": [feedback.to_dict() for feedback in feedbacks]
         }
     )
 

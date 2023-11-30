@@ -1,0 +1,459 @@
+{
+	"info": {
+		"_postman_id": "bd1209c5-a221-47b6-9506-b5d5e2b11afc",
+		"name": "Trabalho-back-feedback",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16858667",
+		"_collection_link": "https://www.postman.com/speeding-sunset-812905/workspace/selfie-dev-maua/collection/16858667-bd1209c5-a221-47b6-9506-b5d5e2b11afc?action=share&source=collection_link&creator=16858667"
+	},
+	"item": [
+		{
+			"name": "Ler todos os feedbacks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://r4gw3w34fg.execute-api.us-east-1.amazonaws.com/prod/feedback/ler-todos-feedbacks",
+					"protocol": "https",
+					"host": [
+						"r4gw3w34fg",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"prod",
+						"feedback",
+						"ler-todos-feedbacks"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Exemplo de sucesso",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://r4gw3w34fg.execute-api.us-east-1.amazonaws.com/prod/feedback/ler-todos-feedbacks",
+							"protocol": "https",
+							"host": [
+								"r4gw3w34fg",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"prod",
+								"feedback",
+								"ler-todos-feedbacks"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "738"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Nov 2023 05:04:01 GMT"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "5a237385-aa9b-4dc3-8024-53b32c250015"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "PMimUHt1IAMEsFA="
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-656817c1-5fca652316cca7021af4ef2b;Sampled=0;lineage=b1778aa8:0"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 58b2b441a0672bff14017947190c8364.cloudfront.net (CloudFront)"
+						},
+						{
+							"key": "X-Amz-Cf-Pop",
+							"value": "GRU3-C1"
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "MsG-CG6-5-VNxv5xkFuCZXXP7CfcM6mXYCxYmADpTseXMRQBm9Hzzw=="
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Feedbacks lidos com sucesso!\",\n    \"feedbacks\": [\n        {\n            \"id\": \"f03524a1-c99b-4bb8-bfdb-f2a202bf0bc2\",\n            \"produto\": {\n                \"nome\": \"Ovo\",\n                \"id\": \"1234\"\n            },\n            \"comentario\": \"legal\",\n            \"classificacao\": 9\n        },\n        {\n            \"id\": \"3e1ad10d-3041-4bde-bcfe-b288d7ee41b7\",\n            \"produto\": {\n                \"nome\": \"Queijo\",\n                \"id\": \"12\"\n            },\n            \"comentario\": \"salgado\",\n            \"classificacao\": 3\n        },\n        {\n            \"id\": \"889aa3bb-a6ee-4859-98ff-93fcb746e9a9\",\n            \"produto\": {\n                \"nome\": \"Pao\",\n                \"id\": \"14\"\n            },\n            \"comentario\": \"bom\",\n            \"classificacao\": 2\n        },\n        {\n            \"id\": \"3634a289-1f27-41a5-b5d7-74aa8db42023\",\n            \"produto\": {\n                \"nome\": \"Queijo\",\n                \"id\": \"12\"\n            },\n            \"comentario\": \"salgado\",\n            \"classificacao\": 3\n        },\n        {\n            \"id\": \"9695f10f-22de-478a-bb28-41be448826cc\",\n            \"produto\": {\n                \"nome\": \"Queijo\",\n                \"id\": \"12\"\n            },\n            \"comentario\": \"salgado\",\n            \"classificacao\": 3\n        }\n    ]\n}"
+				},
+				{
+					"name": "Exemplo sem API Key",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://r4gw3w34fg.execute-api.us-east-1.amazonaws.com/prod/feedback/ler-todos-feedbacks",
+							"protocol": "https",
+							"host": [
+								"r4gw3w34fg",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"prod",
+								"feedback",
+								"ler-todos-feedbacks"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "23"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Nov 2023 05:04:37 GMT"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "41d493cc-01f1-4f0c-8ab3-907a05002347"
+						},
+						{
+							"key": "x-amzn-ErrorType",
+							"value": "ForbiddenException"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "PMir7EfNIAMEZoQ="
+						},
+						{
+							"key": "X-Cache",
+							"value": "Error from cloudfront"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 58b2b441a0672bff14017947190c8364.cloudfront.net (CloudFront)"
+						},
+						{
+							"key": "X-Amz-Cf-Pop",
+							"value": "GRU3-C1"
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "ec41wBBj-5GhYueYay9nT3aYfvsbY1l1ZrW6UzU5T005Ix2guZlGEA=="
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Forbidden\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Ler um feedback",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://r4gw3w34fg.execute-api.us-east-1.amazonaws.com/prod/feedback/ler-feedback?feedback_id=f03524a1-c99b-4bb8-bfdb-f2a202bf0bc2",
+					"protocol": "https",
+					"host": [
+						"r4gw3w34fg",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"prod",
+						"feedback",
+						"ler-feedback"
+					],
+					"query": [
+						{
+							"key": "feedback_id",
+							"value": "f03524a1-c99b-4bb8-bfdb-f2a202bf0bc2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Exemplo de sucesso",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://r4gw3w34fg.execute-api.us-east-1.amazonaws.com/prod/feedback/ler-feedback?feedback_id=f03524a1-c99b-4bb8-bfdb-f2a202bf0bc2",
+							"protocol": "https",
+							"host": [
+								"r4gw3w34fg",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"prod",
+								"feedback",
+								"ler-feedback"
+							],
+							"query": [
+								{
+									"key": "feedback_id",
+									"value": "f03524a1-c99b-4bb8-bfdb-f2a202bf0bc2"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "188"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Nov 2023 05:07:13 GMT"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "4660775c-6430-4901-8622-ceda5312cda7"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "PMjENEpsIAMEDcQ="
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-65681881-50e861785a060d1954ff222d;Sampled=0;lineage=79b0f006:0"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 58b2b441a0672bff14017947190c8364.cloudfront.net (CloudFront)"
+						},
+						{
+							"key": "X-Amz-Cf-Pop",
+							"value": "GRU3-C1"
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "-QNZLAlf5CZmn-_T4qT_-gT80JBsv-sZ9qgM0z1NI58aypL0WzXllg=="
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Feedback lido com sucesso!\",\n    \"feedback\": {\n        \"id\": \"f03524a1-c99b-4bb8-bfdb-f2a202bf0bc2\",\n        \"produto\": {\n            \"nome\": \"Ovo\",\n            \"id\": \"1234\"\n        },\n        \"comentario\": \"legal\",\n        \"classificacao\": 9\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Enviar um Feedback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"produto\":\n        {\n            \"id\": \"12345\",\n            \"nome\": \"Leite\"    \n        },\n        \"comentario\": \"gelado\",\n        \"classificacao\": 8\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://r4gw3w34fg.execute-api.us-east-1.amazonaws.com/prod/feedback/enviar-feedback",
+					"protocol": "https",
+					"host": [
+						"r4gw3w34fg",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"prod",
+						"feedback",
+						"enviar-feedback"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Exemplo de sucesso",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"produto\":\n        {\n            \"id\": \"12345\",\n            \"nome\": \"Leite\"    \n        },\n        \"comentario\": \"gelado\",\n        \"classificacao\": 8\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://r4gw3w34fg.execute-api.us-east-1.amazonaws.com/prod/feedback/enviar-feedback",
+							"protocol": "https",
+							"host": [
+								"r4gw3w34fg",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"prod",
+								"feedback",
+								"enviar-feedback"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "193"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 30 Nov 2023 05:08:08 GMT"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "56c97a9d-fa3d-4c49-8644-a7735010e1ff"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "PMjMrEzkIAMEDng="
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-656818b7-38986eb378b62fb533145d1c;Sampled=0;lineage=65aa3753:0"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 58b2b441a0672bff14017947190c8364.cloudfront.net (CloudFront)"
+						},
+						{
+							"key": "X-Amz-Cf-Pop",
+							"value": "GRU3-C1"
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "huz2oq0GO5IerqmUsKmc53WJQhrszn0XmfXtqIuReHSNai0BkyOA4g=="
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Feedback enviado com sucesso!\",\n    \"feedback\": {\n        \"id\": \"044d750b-dc6a-4337-872e-15bf8ba5ec8f\",\n        \"produto\": {\n            \"nome\": \"Leite\",\n            \"id\": \"12345\"\n        },\n        \"comentario\": \"gelado\",\n        \"classificacao\": 8\n    }\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "7YQaiuW0lq8d5HIvNzdBrafvB8q7J10l1t0NIOEF",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "x-api-key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

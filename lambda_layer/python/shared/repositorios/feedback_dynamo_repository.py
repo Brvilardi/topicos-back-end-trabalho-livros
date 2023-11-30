@@ -14,12 +14,8 @@ AWS_REGION = os.environ.get('AWS_REGION')
 class FeedbacksRepositoryDynamo:
 
     @staticmethod
-    def partition_key_format(user_id) -> str:
-        return f"user#{user_id}"
-
-    @staticmethod
-    def sort_key_format(user_id: int) -> str:
-        return f"#{user_id}"
+    def partition_key_format(id) -> str:
+        return f"feedback#{id}"
 
     def __init__(self):
         self.dynamo = DynamoDatasource(dynamo_table_name=DYNAMO_TABLE,
@@ -28,20 +24,36 @@ class FeedbacksRepositoryDynamo:
         
     def create_feedback(self, new_feedback: Feedback) -> Feedback:
 
-        resp = self.dynamo.put_item(partition_key=self.partition_key_format(new_feedback.feedback_id),
-                                    sort_key=self.sort_key_format(feedback_id=new_feedback.id), item=new_feedback.to_dict()
+        resp = self.dynamo.put_item(partition_key=self.partition_key_format(new_feedback.id),
+            item=new_feedback.to_dict()
                                     )
         return new_feedback
+    
+    def get_feedback_by_id(self, feedback_id: str) -> Feedback:
+        resp = self.dynamo.get_item(partition_key=self.partition_key_format(feedback_id))
+
+        if resp.get('Item') is None:
+            raise Exception("feedback_id does not exist")
+        
+        item = resp["Item"]
+        item["classificacao"] = float(item["classificacao"])
+        
+        feedback = Feedback.from_dict(item)
+        return feedback
+    
+    def get_todos_feedback(self) -> List[Feedback]:
+        resp = self.dynamo.get_all_items()
+        print("Dynamo response:")
+        print(resp)
+
+        feedbacks = []
+        for item in resp['Items']:
+            item["classificacao"] = float(item["classificacao"])
+            feedbacks.append(Feedback.from_dict(item))
+
+        return feedbacks
         
 
-    # def get_user(self, user_id: int) -> User:
-    #     resp = self.dynamo.get_item(partition_key=self.partition_key_format(user_id), sort_key=self.sort_key_format(user_id))
-
-    #     if resp.get('Item') is None:
-    #         raise NoItemsFound("user_id")
-
-    #     user_dto = UserDynamoDTO.from_dynamo(resp["Item"])
-    #     return user_dto.to_entity()
 
     # def get_all_user(self) -> List[User]:
     #     resp = self.dynamo.get_all_items()

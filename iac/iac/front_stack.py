@@ -25,8 +25,7 @@ class FrontEnd(Construct):
         self.cloudfront_distribution = cloudfront.Distribution(self, "FrontEndDistribution",
                                                                 default_behavior=cloudfront.BehaviorOptions(
                                                                     origin= cloudfront_origins.S3Origin(
-                                                                        self.s3_bucket,
-                                                                        origin_path="index.html"
+                                                                        self.s3_bucket
                                                                     )
                                                                 )
         )
